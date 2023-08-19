@@ -1,0 +1,32 @@
+<section class="browsing">
+    <label>
+      <select name="Severity Filter" [(ngModel)]="selectedOption" (change)="getFilteredFiles()">
+        <option class = "type-filter" selected>choose format type</option>
+        <option *ngFor="let type of types">
+            {{type}}
+        </option>
+      </select>
+    
+    </label>
+   
+    <table>
+      <thead>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Format Type</th>
+      <th>Genre</th>
+      <th>Path</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let file of filteredFiles">
+        <td>{{file.id}}</td>
+        <td>{{file.title}}</td>
+        <td>{{file.formatType}}</td>
+        <td>{{file.genre}}</td>
+        <td>{{file.path}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <p *ngIf="prevOption"> Previous filess filter with type: {{prevOption}} </p>
+    
+</section>

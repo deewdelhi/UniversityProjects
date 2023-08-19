@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #dialog {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="open-dialog">Open Dialog</button>
+
+    <div id="dialog" title="Dialog Window" style="display: none;">
+        <p>dialog window!</p>
+        <p>resize and close with 'x'</p>
+    </div>
+
+    <script>
+
+        $('#open-dialog').click(function () {
+
+            $('#dialog').dialog({
+                resizable: true,
+                modal: true,
+                closeOnEscape: true,
+
+            });
+        });
+    </script>
+
+</body>
+
+</html>

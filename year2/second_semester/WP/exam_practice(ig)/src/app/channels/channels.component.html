@@ -1,0 +1,18 @@
+<table class="channels">
+  <thead>
+    <th>ID</th>
+    <th>OWNER</th>
+    <th>NAME</th>
+    <th>DESCRIPTION</th>
+    <!-- <th>PATH</th> -->
+    
+    
+    </thead>
+    <tr *ngFor="let channel of channels" (click)="onSelect(channel)">
+      <td>{{channel.id}}</td> 
+      <td>{{channel.ownerId}}</td>
+      <td>{{channel.name}}</td>
+      <td>{{channel.description}}</td>
+      <!-- <td>{{channel.path}}</td> -->
+    </tr>
+  </table>

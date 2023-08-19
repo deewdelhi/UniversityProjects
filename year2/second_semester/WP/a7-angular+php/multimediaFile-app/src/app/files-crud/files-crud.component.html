@@ -1,0 +1,70 @@
+<div class="crud">
+    <section style="float: left; display: inline;">
+      <br>
+      <table class="all-files">
+        <thead>
+        <th>ID</th>
+        <th>TITLE</th>
+        <th>FORMAT TYPE</th>
+        <th>GENRE</th>
+        <th>PATH</th>
+        
+        <th> </th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let file of files">
+          <td>{{file.id}}</td>
+          <td>{{file.title}}</td>
+          <td>{{file.formatType}}</td>
+          <td>{{file.genre}}</td>
+          <td>{{file.path}}</td>
+          <td>
+            <button class='btnUpdate' type='button' (click)="onUpdate(file)">Update</button>
+            <button class='btnDelete' type='button' (click)="onDelete(file.id)">Delete</button> 
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <p> </p>
+      <br>
+    </section>
+
+
+    <!-- <--            ADD FORM     --> 
+
+
+    <section id="add_form" style="float: left; display: block; padding-left: 50px; padding-top: 12px">
+      <form action="" method="get">
+        <input id="title1" type="text" #newTitle placeholder="title" style="margin: 5px; width: 191px">
+        Title<br>
+        <input id="formatType1" type="text" #newFormatType placeholder="formatType" style="margin: 5px; width: 191px">
+        Format Type<br>
+        <input id="genre1" type="text" #newGenre placeholder="genre" style="margin: 5px; width: 191px">
+        Genre<br>
+        <input id="path1" type="text" #newPath placeholder="path" style="margin: 5px; width: 191px">
+        Path<br>
+        <button id="submitAddBtn" style="margin-top: 10px" (click)="addFile(newTitle,newFormatType,newGenre,newPath)">
+          Add new file</button>
+      </form>
+    </section>
+
+      <!-- <--            UPDATE FORM     --> 
+  
+    <section id="update_form" style="float: left; display: none; padding-left: 50px; padding-top: 12px">
+      <form action="" method="get">
+        <input id="id2" type="text" #uID placeholder="id" readonly style="margin: 5px; width: 191px">
+        ID<br>
+        <input id="title2" type="text" #uTitle placeholder="title" style="margin: 5px; width: 191px">
+        Title<br>
+        <input id="formatType2" type="text" #uFormatType placeholder="formatType" style="margin: 5px; width: 191px">
+        Format Type<br>
+        <input id="genre2" type="text" #uGenre placeholder="genre" style="margin: 5px; width: 191px">
+        Genre<br>
+        <input id="path2" type="text" #uPath placeholder="path" style="margin: 5px; width: 191px">
+        Path<br>
+        <button id="submitUpdateBtn" style="margin-top: 10px" (click)="updateFile(uID,uTitle,uFormatType,uGenre,uPath)">
+          Update</button>
+      </form>
+    </section>
+</div>
+  

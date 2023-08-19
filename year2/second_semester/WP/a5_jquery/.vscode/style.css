@@ -1,0 +1,33 @@
+#myFirstDialog{
+    width:50%;background-color: white;
+    border: 1px solid black;
+    padding: 10px; 
+    width: 300px;
+    resize: both;
+    overflow: auto;
+    min-width: 200px;
+    min-height:30px;
+}
+
+#hide{
+    float:right;
+    /* padding:2px 4px; */
+    background:white;
+
+}
+
+#hide:hover{
+    cursor:pointer
+
+}
+#upperBox {
+    border: 1px  solid black;
+    padding: 5px; 
+ 
+}
+#whitespace{
+    color: white;
+}
+#show:hover{
+    cursor:pointer
+}

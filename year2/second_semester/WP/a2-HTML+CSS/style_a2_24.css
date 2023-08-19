@@ -1,0 +1,14 @@
+#myDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    transition: all 3s;
+}
+
+#myDiv:hover {
+    background-color: red;
+    transform: translate(calc(100vw - 100px), calc(100vh - 100px));
+}

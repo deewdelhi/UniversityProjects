@@ -1,0 +1,18 @@
+<table class="files">
+  <thead>
+    <th>ID</th>
+    <th>TITLE</th>
+    <th>FORMAT TYPE</th>
+    <th>GENRE</th>
+    <th>PATH</th>
+    
+    
+    </thead>
+    <tr *ngFor="let file of files" (click)="onSelect(file)">
+      <td>{{file.id}}</td> 
+      <td>{{file.title}}</td>
+      <td>{{file.formatType}}</td>
+      <td>{{file.genre}}</td>
+      <td>{{file.path}}</td>
+    </tr>
+  </table>

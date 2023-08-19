@@ -1,0 +1,30 @@
+<section class="browsing">
+    <label>
+      <select name="Severity Filter" [(ngModel)]="selectedOption" (change)="getFilteredChannels()">
+        <option class = "owner-filter" selected>choose owner</option>
+        <option *ngFor="let owner of owners">
+            {{owner}}
+        </option>
+      </select>
+    
+    </label>
+   
+    <table>
+      <thead>
+      <th>ID</th>
+      <th>OwnerId</th>
+      <th>NAME</th>
+      <th>DESCRIPTION</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let channel of filteredChannels">
+        <td>{{channel.id}}</td> 
+      <td>{{channel.ownerId}}</td>
+      <td>{{channel.name}}</td>
+      <td>{{channel.description}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <p *ngIf="prevOption"> Previous channels with owner: {{prevOption}} </p>
+    
+</section>

@@ -1,0 +1,57 @@
+{
+    "channels": [
+      {
+        "id": 1,
+        "guid": "bd68f8cf-245f-4f26-95ae-43269b751ba2",
+        "name": "General",
+        "users": [
+          {
+            "id": 1,
+            "nickname": "User1",
+            "messages": [
+              {
+                "id": 1,
+                "date": "2023-07-12T10:30:00Z",
+                "content": "Hello, everyone!"
+              },
+              {
+                "id": 2,
+                "date": "2023-07-12T11:15:00Z",
+                "content": "How's everyone doing?"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "nickname": "User2",
+            "messages": [
+              {
+                "id": 3,
+                "date": "2023-07-12T10:45:00Z",
+                "content": "Hey there!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "guid": "27d95664-7b4d-4f6e-86d1-ff192d7c146e",
+        "name": "Announcements",
+        "users": [
+          {
+            "id": 3,
+            "nickname": "User3",
+            "messages": [
+              {
+                "id": 4,
+                "date": "2023-07-12T12:00:00Z",
+                "content": "Important announcement!"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

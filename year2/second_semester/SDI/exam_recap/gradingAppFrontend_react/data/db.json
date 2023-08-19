@@ -1,0 +1,92 @@
+{
+  "exams": [
+    {
+      "id": 1,
+      "guid": "a5c8c532-0a9e-4f6d-b024-32f5c3e3a2d3",
+      "title": "Math Exam",
+      "examiners": [
+        {
+          "guid": "71b7b06a-d542-41a3-b8e3-9c0c6c07d8a0",
+          "name": "John Smith"
+        },
+        {
+          "guid": "0b6db8d1-c321-42b4-aa67-dc6173a2d221",
+          "name": "Jane Doe"
+        },
+        {
+          "guid": "5ac9ab7e-859c-4524-8cfd-3b8c9a10aefc",
+          "name": "David Johnson"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "guid": "9e3d38a4-1b9f-4e02-8543-64f6b5a5a6e7",
+      "title": "Science Exam",
+      "examiners": [
+        {
+          "guid": "126af5e8-df9b-4b76-8c4d-891cf9c3f0c4",
+          "name": "Sarah Brown"
+        },
+        {
+          "guid": "edbfb712-1b3c-43db-b5c2-af81102de9f7",
+          "name": "Michael Wilson"
+        },
+        {
+          "guid": "c299e1b1-82d2-4e7e-9397-c64c73a9d2b6",
+          "name": "Emily Thompson"
+        }
+      ]
+    },
+    {
+      "guid": "7cbc9b58-cefa-4e92-ae0a-427eec8c80c3",
+      "title": "romana",
+      "examiners": [
+        {
+          "guid": "27dfe0c1-3888-4777-98a0-a862dda38d15",
+          "name": "robert"
+        },
+        {
+          "guid": "b38ceeba-0190-41e5-bcf7-2bddeae1ad0f",
+          "name": "mara"
+        },
+        {
+          "guid": "c04a6a68-a494-46a6-ae08-e2aa20d182cd",
+          "name": "clara"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "guid": "c97fda0a-f66e-452d-bef0-47f7551c1d5b",
+      "title": "matematica",
+      "examiners": [
+        {
+          "guid": "399f0dca-d9e8-4d38-b296-efb5c6b2d150",
+          "name": "elisabeta"
+        },
+        {
+          "guid": "35906c5b-74aa-4cd7-81ca-b54c1f8cc7c6",
+          "name": "thomas"
+        },
+        {
+          "guid": "218c3bd1-b30f-4699-953e-df3c2186118a",
+          "name": "garry"
+        }
+      ],
+      "id": 4
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "name": "a5c8c532-0a9e-4f6d-b024-32f5c3e3a2d3",
+      "title": "Math Exam"
+    },
+    {
+      "id": 2,
+      "name": "9e3d38a4-1b9f-4e02-8543-64f6b5a5a6e7",
+      "title": "Science Exam"
+    }
+  ]
+}

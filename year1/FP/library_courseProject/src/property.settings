@@ -1,0 +1,5 @@
+
+repository = "textfile"
+book = "book"
+client = "client"
+rental = "rental"

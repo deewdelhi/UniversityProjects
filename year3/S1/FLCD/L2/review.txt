@@ -1,0 +1,3 @@
+review:
+-  clean code in general
+- a little inconsistency regarding the print statement between syntax and the actual code but fixed it on the spot

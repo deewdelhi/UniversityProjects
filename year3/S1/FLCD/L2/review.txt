@@ -1,3 +1,6 @@
 review:
 -  clean code in general
 - a little inconsistency regarding the print statement between syntax and the actual code but fixed it on the spot
+- the code was readable and easy to understand
+- simple and easy to understand variables
+- lexical error were easy to spot 

@@ -1,0 +1,19 @@
+Documentation:
+
+scanner to analyze the program, if the program is lexically correct it will give the output like so and will also generate a .txt fro 
+both the pif  for th program and for the symmbol table
+
+Important Operations scanner:
+
+- create_list_of_program_elementse():
+prapares the program string for the actual tokenize method, it splits the string using the operators and the separtors, but also adding  them to the list 
+
+- tokenize(toBeTokens): 
+function to create the strings in case of a stirng constant and also cretes a list of pairs containing the token and the positoon okf the token in the program( line and column)
+
+-scan() :
+takes the list created by the tokenize method and creates the pif and the symbol table
+checks if a token is an identifier, a constant( stirng or int) a separator or a reserved word adds them in the targeted hashTable in the symbol table 
+if a  lexical is found it ll be added in the list of errors that will be dysplaied    at the end,, in  this case the pif and symbol table filles won t be generated
+
+( THEN PROGRAMS THE SCANNER WAS TESTED ON ARE FOUND IN THE LAB 1 DIRECTORY)

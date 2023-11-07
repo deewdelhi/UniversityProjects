@@ -1,0 +1,7 @@
+ IDENTIFIERS: 
+terminal        - at hashed value -       0 
+ el        - at hashed value -       9 
+ print        - at hashed value -       17 
+ a        - at hashed value -       17 
+  INT CONSTANTS: 
+ STRING CONSTANTS: 

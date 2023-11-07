@@ -1,0 +1,10 @@
+ IDENTIFIERS: 
+x        - at hashed value -       0 
+ gcd        - at hashed value -       2 
+ a        - at hashed value -       17 
+ WHILE        - at hashed value -       17 
+ b        - at hashed value -       18 
+  INT CONSTANTS: 
+ STRING CONSTANTS: 
+'hgahsd65sdjas'        - at hashed value -       1 
+ 

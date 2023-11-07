@@ -1,0 +1,184 @@
+
+import re
+from collections import namedtuple
+from typing import List
+from symbolTable import SymbolTable
+from hashTable import HashTable
+
+#Pair = namedtuple('Pair', ['key', 'value'])
+
+class ScannerException(Exception):
+    pass
+
+
+class Scanner:
+    def __init__(self):
+        self.program = ""
+        self.tokens = []
+        self.reserved_words = []
+        self.symbol_table = None
+        self.PIF = []
+        self.index = 0
+        self.current_line = 1
+        self.read_tokens()
+
+    def set_program(self, program):
+        self.program = program
+
+    def read_tokens(self):
+        
+        with open(r"D:\uni\UniversityProjects\year3\S1\FLCD\L3\lab2_python\token.in","r") as file:
+            for line in file:
+                parts = line.strip().split(" ")
+                if parts[0] in ["FCT","int","string","char","bool","READ","IF","ELSE","DO","arr","GO_THROUGH","SENDBACK","SHOW","SENDBACK","IF","MIN_INT","MAX_INT"]:
+                    self.reserved_words.append(parts[0])
+                else:
+                    self.tokens.append(parts[0])
+        
+
+    def skip_spaces(self):
+        while self.index < len(self.program) and self.program[self.index] == " ":
+            if self.program[self.index] == '\n':
+                self.current_line += 1
+            self.index += 1
+
+    def skip_comments(self):
+        while self.index < len(self.program) and self.program[self.index] == '#':
+            while self.index < len(self.program) and self.program[self.index] != '\n':
+                self.index += 1
+
+    def treat_string_constant(self):
+        # regex for string matcher
+        # checks fro any possible outut between ""
+        # similar concepts to the identifier funciton
+
+        regex_for_string_constant = re.compile('^"[a-zA-Z0-9_ ?:*^+=.!]*"')
+        matcher = regex_for_string_constant.match(self.program[self.index:])
+        if not matcher:
+            if re.compile('^"[^"]"').match(self.program[self.index:]):
+                raise ScannerException("Invalid string constant at line " + str(self.current_line))
+            if re.compile('^"[^"]').match(self.program[self.index:]):
+                raise ScannerException("Missing \" at line " + str(self.current_line))
+            return False
+        string_constant = matcher.group(0)
+        self.index += len(string_constant)
+        position = self.symbol_table.addStringConstant(string_constant)
+        print(position)
+        self.PIF.append(("str const", position))
+        return True
+
+    def treat_int_constant(self):
+        regex_for_int_constant = re.compile(r'^([+-]?[1-9][0-9]*|0)')
+        matcher = regex_for_int_constant.match(self.program[self.index:])
+        if not matcher:
+            return False
+        if re.compile(r'^([+-]?[1-9][0-9]*|0)[a-zA-z_]').match(self.program[self.index:]):
+            return False
+        int_constant = matcher.group(1)
+        self.index += len(int_constant)
+        position = self.symbol_table.addIntConstant(int(int_constant))
+        print(position)
+        self.PIF.append(("int const", position))
+        return True
+
+    
+    def check_if_valid(self, possible_identifier, program_substring):
+        
+        if possible_identifier in self.reserved_words:
+            return False
+        #TODO: fix this regex for your program syntax
+        # if the token is a legit declaration it return true
+        if re.match(r'^[A-Za-z_][A-Za-z0-9_]*', program_substring):
+            return True
+        #if the identifier is not a legit declaration( then it must be in the symbol table) and also is not in the symbol table then it means that 
+            # it is a variable that it was not declareed => syntax error ( or some kind of error at least)
+        return self.symbol_table.hasIdentifier(possible_identifier)
+
+    def treat_identifier(self):
+        # rege for an identifier: start with a letter or an underscore and the rest can be empty, letters, digits or underscore:
+        #myVar, _variable123, Name_With_Underscores  are matched but not   123invalid 
+        regex_for_identifier = re.compile(r'^([a-zA-Z_][a-zA-Z0-9_]*)')
+        # checks if the token is an identifier if not it returns false
+        toMatch = self.program[self.index:]
+        matcher = regex_for_identifier.match(toMatch)
+        #print(self.program[self.index:])
+        if not matcher:
+            return False
+        # matcher.group(1) retrieves the actual identifier that was matched in the text
+        identifier = matcher.group(1)
+        # if it is not a valid identifier then it return false and in the next+ token funciton will see if it is sth else ; if it can t be labeled an error will be raised
+        if not self.check_if_valid(identifier, self.program[self.index:]):
+            return False
+        # if the identifier is valid the PIF entry for it will be generated and the parsig for the tokens will continue to the next one
+        self.index += len(identifier)
+        position = self.symbol_table.addIdentifier(identifier)
+        #TODO: fix the pair here so that it works
+        print(position)
+        self.PIF.append(("identifier", position))
+        return True
+
+    def treat_from_token_list(self):
+        possible_token = self.program[self.index:].split(" ")[0]
+        for reserved_token in self.reserved_words:
+            # daca incepe cu reserved token
+            if possible_token.startswith(reserved_token):
+                regex = "^" + "[a-zA-Z0-9_]*" + reserved_token + "[a-zA-Z0-9_]+"
+                # daca are ceva pe langa reserved token
+                if re.compile(regex).match(possible_token):
+                    return False
+                self.index += len(reserved_token)
+                self.PIF.append((reserved_token,(-1, -1)))
+                return True
+        for token in self.tokens:
+            if possible_token == token:
+                self.index += len(token)
+                self.PIF.append((token, (-1, -1)))
+                return True
+            elif possible_token.startswith(token):
+                self.index += len(token)
+                self.PIF.append((token,(-1, -1)))
+                return True
+        return False
+    
+
+
+    def next_token(self):
+        self.skip_spaces()
+        self.skip_comments()
+        if self.index == len(self.program):
+            return
+        if self.treat_identifier():
+            return
+        if self.treat_string_constant():
+            return
+        if self.treat_int_constant():
+            return
+        if self.treat_from_token_list():
+            return
+        raise ScannerException("Lexical error: invalid token at line " + str(self.current_line) + ", index " + str(self.index))
+
+    def scan(self, program_file_name):
+        
+        try:
+            programFile = open(rf"D:\uni\UniversityProjects\year3\S1\FLCD\L1\{program_file_name}.txt","r")
+            self.set_program(programFile.read())
+            self.index = 0
+            self.PIF = []
+            identifiersHashTable = HashTable(20)
+            intConstantHashTable = HashTable(20)
+            stringConstantHashTable = HashTable(20)
+            symbolTable = SymbolTable(20,identifiersHashTable,intConstantHashTable,stringConstantHashTable)
+            self.symbol_table = symbolTable
+            self.current_line = 1
+            while self.index < len(self.program):
+                self.next_token()
+            with open("PIF" + program_file_name.replace(".txt", ".out"), 'w') as file_writer:
+                for pair in self.PIF:
+                    #file_writer.write(pair.key + " -> (" + str(pair.value.key) + ", " + str(pair.value.value) + ")\n")
+                    file_writer.write(pair[0] + "  ->   "+str(pair[1])+ "\n")
+                    
+            with open("ST" + program_file_name.replace(".txt", ".out"), 'w') as file_writer:
+                file_writer.write(self.symbol_table.toString())
+            print("Lexically correct")
+        except (IOError, ScannerException) as e:
+            print(str(e))

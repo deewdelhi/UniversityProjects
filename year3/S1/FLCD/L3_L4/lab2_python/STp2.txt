@@ -1,0 +1,8 @@
+ IDENTIFIERS: 
+max        - at hashed value -       6 
+ el        - at hashed value -       9 
+ getMax        - at hashed value -       14 
+ a        - at hashed value -       17 
+  INT CONSTANTS: 
+0        - at hashed value -       8 
+  STRING CONSTANTS: 

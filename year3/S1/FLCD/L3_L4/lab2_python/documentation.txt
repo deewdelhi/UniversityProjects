@@ -1,0 +1,32 @@
+https://github.com/deewdelhi/UniversityProjects/tree/main/year3/S1/FLCD/L3/lab2_python
+
+Documentation:
+
+the symbol table is composed from 3 separate hashtables, one for the identifiers, one for integer constants and one for string constants.the hash tables are represented as a list where at each index there is another list. the size is given. the hash function for the hash table is the following: for integer key, the hash value will be that int module teh size of the hashtable, and for string keys teh hash value will be the sum of ascii codes of the keys modulo the size of the hashtable.
+
+Operations:
+
+->hash table:
+
+- getSize(): returns the size of the jhash table
+- hash (key): fucntion to cuompute the hash value of a key - the procedure is written in the description
+
+-contains(entry) :  checks if there is a  specific value at the computed hash value
+
+-add (item): fucntion to add a new entry in te hash table
+
+-get(key): return the value of the key-value pair that can be found at that key
+
+-toString: returns printable version of the hashTable
+
+
+-> symbolTable:
+
+-add(entry) - similar for all the 3 hashtables
+-has(entry) - checks if a certain hashTable has a certain entry
+
+
+
+
+
+

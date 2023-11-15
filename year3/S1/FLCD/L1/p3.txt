@@ -1,0 +1,7 @@
+FCT print [ a() ]:
+<<
+  GO_THROUGH [ a->el ] :
+  <<
+    el.SHOW(terminal)
+  >>
+>>

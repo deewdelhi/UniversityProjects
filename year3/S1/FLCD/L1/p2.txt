@@ -1,0 +1,9 @@
+FCT getMax [a()]:
+<<
+  max = 0
+  GO_THROUGH[a->el] :
+  <<
+    IF << el>max >> : max=el  
+  >>
+  SENDBACK max
+>>

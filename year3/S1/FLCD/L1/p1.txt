@@ -1,0 +1,11 @@
+FCT gcd [ a, b ]:
+<<
+  WHILE [a !=! b]:
+  <<
+    x = 'hgahsd65sdjas'
+    IF << a>b >> : a=a-b  
+     ELSE: b = b-a
+  >>
+    SENDBACK a
+>>
+ 

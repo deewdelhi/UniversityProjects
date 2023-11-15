@@ -1,0 +1,22 @@
+Finite Automata
+
+-  class to  mimic finite automata way of behaving
+
+- def readFromFile(): function to get the finite automata specifications form a .txt, and also checks if the finite automata is deterministic or not
+- def  checkIfDeterministic(): checks if the finite automat is deterministic or not, by cehcking if a transitions has a unique after state
+- def acceptSequesne(): fucntion to check if a sequence given by the user is accepted by the finite automata with the speciifications given from the .txt,
+      checks if the symbols in the sequence are propperly arranged ( or valid) so that the finite automata can reach from the initial state, to the possible final states
+
+
+TRANSITION FORMAT:
+
+non_zero_digit = 1|2| .. |9
+digit = 0|1|..|9
+number = non_zero_digit{digit}
+letter = a|b|..|z|A|B..|Z
+character = letter | digit
+firstLine = character;character; ...
+secondLine = character
+thirdLine = character;character; ...
+fourthLine = character;character; ...
+rest =  character " " character " " character "\n" ... 

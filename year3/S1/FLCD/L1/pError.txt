@@ -1,0 +1,14 @@
+
+FCT getMin [a()]:
+    <<
+        max = MAX_INT
+        GO_THROUGH[a->el] :
+            <<
+              IF << el<max >> : max=el  
+            >>
+
+    SéNDBACK max
+    >>
+
+
+DéO: getMin[(2,4,5,6,)]

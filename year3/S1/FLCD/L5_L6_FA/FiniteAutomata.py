@@ -18,6 +18,7 @@ class FinaiteAutomata:
                 if (index < 4 ):
                   
                     faElement = re.split(r'[;\n]+', line)
+                    
                     filtered_list = [s for s in faElement if s]
                     
                     if ( index == 0):self.states = filtered_list

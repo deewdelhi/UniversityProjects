@@ -42,6 +42,7 @@ class Grammar :
         return enrichedGrammar
         
     def getProductionsForNonTerminal(self,nonterminal):
+        if ( nonterminal not in self.getNonTerminals() ) : return None
         return self.productions[nonterminal]
 
     def processProduction(self,line):

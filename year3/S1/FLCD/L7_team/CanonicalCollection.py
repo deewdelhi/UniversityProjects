@@ -9,9 +9,21 @@ class CanonicalCollection:
     def getStates(self):
         return self.states
     
+    # def to_string(self):
+    #     result = "" 
+    #     for index,  state in enumerate(self.states):
+    #         result = f"----------state at index: {index}-------------\n "
+    #         result = result + state.to_string()
+
+    #     return result
+
+
+    
+    
     def to_string(self):
-        result = ""
-        for state in self.states:
-            result = result + state.to_string()
+        result = "" 
+        for count , state in enumerate(self.getStates()):
+            result = result + f"----------state at index: {count}-------------\n "
+            result = result + state.to_string() + "\n"
 
         return result

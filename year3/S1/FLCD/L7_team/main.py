@@ -2,20 +2,20 @@ from Grammar import Grammar
 from LR import LR
 
 # def printGrammarMenu():
-#     print( "0-exit")
+#     print( "0-exit")b
 #     print("1-is CFG")
 #     print( "2-show terminals")
 #     print( "3-show non terminals")
 #     print( "4-show starting symbol")
 #     print( "5-show productions")
-#     print( "6-activate the monster")
+#     # print( "6-activate the monster")
 #     print( "7-productions for non terminal")
 
 # def start():
 #     printGrammarMenu()
 #     g = Grammar()
 #     while True:
-#         i = int(input(" enter your choice"))
+#         i = int(input(" enter your choice:    "))
 #         if ( i == 0):
 #             break
 #         elif( i == 1):
@@ -35,13 +35,14 @@ from LR import LR
 #             print(lrAlg.canonicalCollection().to_string())
 
 #         elif(i == 7):
-#             j = input("enter the non terminal")
+#             j = input("enter the non terminal:    ")
 #             print(g.getProductionsForNonTerminal(j))
 
 
 # start()
 
 g = Grammar()
+
 lrAlg = LR(g)
 print(lrAlg.canonicalCollection().to_string())
 

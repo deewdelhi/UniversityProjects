@@ -60,20 +60,14 @@ class Grammar :
 
             self.productions[splitedLeftSide[0]].append(stripped_list)
 
-
-        # self.SEPARATOR_OR_TRANSITION  = "\\|"
-        # self.TRANSITION_CONCATENATION = " "
-        # self.SEPARATOR_LEFT_RIGHT_HAND_SIDE = "->"
-
     def checkIfCFG(self):
         if( self.startingSymbol not in self.notTerminals): 
           
             return False
         for lefthandside in self.productions.keys():
-            # if len(lefthandside) != 1 or lefthandside not in self.notTerminals : 
             if lefthandside not in self.notTerminals :
-               
                 return False  
+            
         for possibleNextMoves in self.productions.get(lefthandside):
             for possibleNextMove in possibleNextMoves:
                 if possibleNextMove not in self.notTerminals and possibleNextMove not in self.terminals and possibleNextMove != self.EPSILON:
@@ -84,7 +78,7 @@ class Grammar :
     
 
     def readFromFile(self):
-        with open(r"D:\uni\UniversityProjects\year3\S1\FLCD\L7_team\g2.txt","r") as file:
+        with open(r"D:\uni\UniversityProjects\year3\S1\FLCD\L7_team\g1_2.txt","r") as file:
             for index, line in enumerate(file):
                 if (index < 3 ):          
                     terminalBoth = re.split(r'[&\n]+', line)

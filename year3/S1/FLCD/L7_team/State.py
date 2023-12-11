@@ -13,7 +13,6 @@ class State:
 
         return result
     
-
     def getSymbolsSucceedingTheDot(self):
         symbols = set()
         for item in self.items:
@@ -25,17 +24,6 @@ class State:
                 if item.getDotPos() < len(item.getRhs()) :
                     symbols.add(item.getRhs())
         return list(symbols)
-    
-    # def getSymbolsSucceedingTheDot(self):
-    #     symbols = set()
-    #     for item in self.items:
-    #         if ( type(self.rhs == list)):
-    #             pass
-    #         if item.getDotPos() < len(item.getRhs()) :
-    #             symbols.add(list(item.getRhs())[0][item.getDotPos()] )
-
-    #     return list(symbols)
-
 
     def __eq__(self, other_state):
             return (

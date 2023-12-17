@@ -1,8 +1,8 @@
 class Item:
-    def __init__ (self,l,r,d):
-        self.lhs = l #string
-        self.rhs = r #list
-        self.dotPos = d #int
+    def __init__ (self, l: str, r: list, d: int):
+        self.lhs: str = l
+        self.rhs: list = r
+        self.dotPos: int = d
 
     def getLhs(self) :
         return self.lhs
@@ -15,10 +15,10 @@ class Item:
     
     def to_string(self):
 
-        string_right_hand_side1 = ''.join(self.getRhs()[:self.getDotPos()])
-        string_left_hand_side2 = ''.join(self.getRhs()[self.getDotPos():])
+        string_right_hand_side1 = ' '.join(self.getRhs()[:self.getDotPos()])
+        string_left_hand_side2 = ' '.join(self.getRhs()[self.getDotPos():])
 
-        return f"{self.lhs} -> {string_right_hand_side1}.{string_left_hand_side2} \n"
+        return f" {self.lhs} -> {string_right_hand_side1}.{string_left_hand_side2} "
 
 
     def __eq__(self, other_item):

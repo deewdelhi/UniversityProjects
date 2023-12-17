@@ -78,7 +78,7 @@ class Grammar :
     
 
     def readFromFile(self):
-        with open(r"D:\uni\UniversityProjects\year3\S1\FLCD\L7_team\g1_2.txt","r") as file:
+        with open(r"D:\uni\UniversityProjects\year3\S1\FLCD\L7_team\g2.txt","r") as file:
             for index, line in enumerate(file):
                 if (index < 3 ):          
                     terminalBoth = re.split(r'[&\n]+', line)

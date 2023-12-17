@@ -12,7 +12,7 @@ class CanonicalCollection:
     def to_string(self):
         result = "" 
         for count , state in enumerate(self.getStates()):
-            result = result + f"----------state at index: {count}-------------\n "
-            result = result + state.to_string() + "\n"
+            result = result + f"----------state at index: {count}------------- \n "
+            result = result + " " + state.to_string() + " " + "\n"
 
         return result

@@ -1,0 +1,386 @@
+				Link git: https://github.com/deewdelhi/UniversityProjects/tree/main/year3/S1/FLCD/L8_FLEX
+
+======================================================================================================================
+				Lex Specification File:
+
+%{ 	 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int currentLine = 1;
+%} 
+
+%option noyywrap
+
+IDENTIFIER		[a-zA-Z_][a-zA-Z0-9_]*
+NUMBER_CONST	0|[+|-]?[1-9][0-9]*([.][0-9]*)?|[+|-]?0[.][0-9]*
+STRING_CONST	[\"][a-zA-Z0-9 ]+[\"]
+CHAR_CONST		[\'][a-zA-Z0-9 ][\']
+
+%%
+
+"read"|"write"|"if"|"else"|"for"|"while"|"int"|"string"|"char"|"return"|"start"|"array"		{printf("Reserved word: %s\n", yytext);}
+"+"|"-"|"*"|"/"|"%"|"<="|">="|"=="|"!="|"<"|">"|"="		{printf("Operator: %s\n", yytext);}
+"{"|"}"|"("|")"|"["|"]"|":"|";"|","|"'"|"\""		{printf("Separator: %s\n", yytext);}
+{IDENTIFIER}		{printf("Identifier: %s\n", yytext);}
+{NUMBER_CONST}		{printf("Number: %s\n", yytext);}
+{STRING_CONST}		{printf("String: %s\n", yytext);}
+{CHAR_CONST}		{printf("Character: %s\n", yytext);}
+
+[ \t]+		{}
+[\n]+	{currentLine++;}
+
+[0-9][a-zA-Z0-9_]*		{printf("Illegal identifier at line %d\n", currentLine);}
+[+|-]0		{printf("Illegal numeric constant at line %d\n", currentLine);}
+[+|-]?[0][0-9]*([.][0-9]*)?		{printf("Illegal numeric constant at line %d\n", currentLine);}
+[\'][a-zA-Z0-9 ]{2,}[\']|[\'][a-zA-Z0-9 ][a-zA-Z0-9 ][\']		{printf("Illegal character constant at line %d\n", currentLine);}
+[\"][a-zA-Z0-9_]+|[a-zA-Z0-9_]+[\"]		{printf("Illegal string constant at line %d\n", currentLine);}
+
+%%
+
+void main(argc, argv)
+int argc;
+char** argv;
+{           
+if (argc > 1)
+{
+    FILE *file;
+    file = fopen(argv[1], "r");
+    if (!file)
+    {
+        fprintf(stderr, "Could not open %s\n", argv[1]);
+        exit(1);
+    }
+    yyin = file;
+}
+
+yylex();
+}
+
+======================================================================================================================
+					Demo ( for p1,p2,p3 and the error):
+Basic how to:
+	flex .\lang.lxi
+	gcc lex.yy.c -o scanner
+	.\scanner.exe .\p1.txt
+======================================================================================================================
+                                          Command line output:
+C:\Users\ANDREEA>d:
+
+D:\>cd D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>flex .\lang.lxi
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>gcc lex.yy.c -o scanner
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>.\scanner.exe .\p1.txt
+Reserved word: start
+Separator: {
+Reserved word: int
+Identifier: a
+Separator: ;
+Reserved word: int
+Identifier: b
+Separator: ;
+Reserved word: int
+Identifier: c
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: a
+Separator: )
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: b
+Separator: )
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: c
+Separator: )
+Separator: ;
+Reserved word: int
+Identifier: maxim
+Separator: ;
+Reserved word: if
+Separator: (
+Identifier: a
+Operator: >
+Identifier: b
+Separator: )
+Separator: {
+Identifier: maxim
+Operator: =
+Identifier: a
+Separator: ;
+Separator: }
+Reserved word: else
+Separator: {
+Identifier: maxim
+Operator: =
+Identifier: b
+Separator: ;
+Separator: }
+Reserved word: if
+Separator: (
+Identifier: c
+Operator: >
+Identifier: maxim
+Separator: )
+Separator: {
+Identifier: maxim
+Operator: =
+Identifier: c
+Separator: ;
+Separator: }
+Reserved word: else
+Separator: {
+Identifier: c
+Operator: =
+Number: 0
+Separator: ;
+Separator: }
+Reserved word: string
+Identifier: text
+Separator: ;
+Identifier: text
+Operator: =
+String: "Maximum is "
+Separator: ;
+Reserved word: write
+Separator: (
+Character: 'a'
+Separator: )
+Separator: ;
+Reserved word: write
+Separator: (
+Identifier: maxim
+Separator: )
+Separator: ;
+Separator: }
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>.\scanner.exe .\p2.txt
+Reserved word: start
+Separator: {
+Reserved word: int
+Identifier: a
+Separator: ;
+Reserved word: int
+Identifier: b
+Separator: ;
+Reserved word: int
+Identifier: c
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: a
+Separator: )
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: b
+Separator: )
+Separator: ;
+Reserved word: while
+Separator: (
+Identifier: b
+Operator: !=
+Number: 0
+Separator: )
+Separator: {
+Identifier: c
+Operator: =
+Identifier: a
+Operator: %
+Identifier: b
+Separator: ;
+Identifier: a
+Operator: =
+Identifier: b
+Separator: ;
+Identifier: b
+Operator: =
+Identifier: c
+Separator: ;
+Separator: }
+Reserved word: write
+Separator: (
+Identifier: a
+Separator: )
+Separator: ;
+Separator: }
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>.\scanner.exe .\p3.txt
+Reserved word: start
+Separator: {
+Reserved word: int
+Identifier: n
+Separator: ;
+Reserved word: int
+Identifier: x
+Separator: ;
+Reserved word: int
+Identifier: sum
+Separator: ;
+Identifier: sum
+Operator: =
+Number: 0
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: n
+Separator: )
+Separator: ;
+Reserved word: while
+Separator: (
+Identifier: n
+Operator: >
+Number: 0
+Separator: )
+Separator: {
+Reserved word: read
+Separator: (
+Identifier: x
+Separator: )
+Separator: ;
+Identifier: sum
+Operator: =
+Identifier: sum
+Operator: +
+Identifier: x
+Separator: ;
+Identifier: n
+Operator: =
+Identifier: n
+Operator: -
+Number: 1
+Separator: ;
+Separator: }
+Reserved word: write
+Separator: (
+Identifier: sum
+Separator: )
+Separator: ;
+Separator: }
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>.\scanner.exe .\p_error.txt
+Could not open .\p_error.txt
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>.\scanner.exe .\p_err.txt
+Reserved word: int
+Identifier: a
+Operator: =
+Number: +2
+Separator: ;
+Reserved word: int
+Illegal identifier at line 2
+Separator: ;
+Reserved word: int
+Identifier: c
+Separator: ;
+Reserved word: int
+Identifier: max
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: a
+Separator: )
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: b
+Separator: )
+Separator: ;
+Reserved word: read
+Separator: (
+Identifier: c
+Separator: )
+Separator: ;
+Reserved word: if
+Separator: (
+Identifier: a
+Operator: >
+Identifier: b
+Separator: )
+Separator: {
+Identifier: max
+Operator: =
+Identifier: a
+Separator: ;
+Separator: }
+Reserved word: else
+Separator: {
+Identifier: max
+Operator: =
+Identifier: b
+Separator: ;
+Separator: }
+Reserved word: if
+Separator: (
+Identifier: c
+Operator: >
+Identifier: max
+Separator: )
+Separator: {
+Identifier: max
+Operator: =
+Identifier: c
+Separator: ;
+Separator: }
+Reserved word: write
+Separator: (
+Illegal character constant at line 17
+Separator: )
+Separator: ;
+Reserved word: write
+Separator: (
+Identifier: max
+Separator: )
+Separator: ;
+
+D:\uni\UniversityProjects\year3\S1\FLCD\L8_FLEX>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

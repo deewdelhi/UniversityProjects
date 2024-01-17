@@ -1,0 +1,345 @@
+
+flex .\scanner.lxi
+bison -d .\parser.y
+gcc .\parser.tab.c .\lex.yy.c -o please -lm
+.\please.exe .\p2.txt
+
+
+
+Microsoft Windows [Version 10.0.19045.3803]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ANDREEA>d:
+
+D:\>cd D:\uni\UniversityProjects\year3\S1\FLCD\newyacc
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>flex .\scanner.lxi
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>bison -d .\parser.y
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>gcc .\parser.tab.c .\lex.yy.c -o please -lm
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>.\please.exe .\p1.txt
+DEF - reserved word
+get_max_between3 - identifier
+[ - separator
+INT - reserved word
+Type -> integer
+a - identifier
+, - separator
+INT - reserved word
+Type -> integer
+b - identifier
+, - separator
+INT - reserved word
+Type -> integer
+c - identifier
+] - separator
+DeclarationStatement -> Type IDENTIFIER
+DeclarationStatement -> Type IDENTIFIER , DeclarationStatement
+DeclarationStatement -> Type IDENTIFIER , DeclarationStatement
+( - separator
+IF - reserved word
+[ - separator
+a - identifier
+>= - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Relation -> >=
+b - identifier
+&& - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+a - identifier
+>= - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Relation -> >=
+c - identifier
+] - separator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Condition -> Expression Relation Expression
+Condition -> Expression Relation Expression AND Condition
+( - separator
+RET - reserved word
+a - identifier
+ReturnStatement -> ret IDENTIFIER
+Statement -> ReturnStatement
+; - separator
+) - separator
+CompoundStatement -> Statement ;
+ELIF - reserved word
+[ - separator
+b - identifier
+>= - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Relation -> >=
+a - identifier
+&& - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+b - identifier
+>= - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Relation -> >=
+c - identifier
+] - separator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Condition -> Expression Relation Expression
+Condition -> Expression Relation Expression AND Condition
+( - separator
+RET - reserved word
+b - identifier
+ReturnStatement -> ret IDENTIFIER
+Statement -> ReturnStatement
+; - separator
+) - separator
+CompoundStatement -> Statement ;
+ELSE - reserved word
+( - separator
+RET - reserved word
+c - identifier
+ReturnStatement -> ret IDENTIFIER
+Statement -> ReturnStatement
+; - separator
+) - separator
+CompoundStatement -> Statement ;
+IfStatement -> if [ Expression ] ( CompoundStatement ) elif [ Expression ] ( CompoundStatement ) else { CompoundStatement }
+Statement -> IfStatement
+; - separator
+) - separator
+CompoundStatement -> Statement ;
+; - separator
+Program -> def IDENTIFIER [ DeclarationStatement ]  ( CompoundStatement )
+        OK
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>.\please.exe .\p2.txt
+DEF - reserved word
+check_prime - identifier
+[ - separator
+INT - reserved word
+Type -> integer
+number - identifier
+] - separator
+DeclarationStatement -> Type IDENTIFIER
+( - separator
+INT - reserved word
+Type -> integer
+a - identifier
+= - operator
+"mer" - string constant
+AssignmentStatement -> Type IDENTIFIER = STRINGCONSTANT
+Statement -> AssignmentStatement
+; - separator
+FOR - reserved word
+[ - separator
+INT - reserved word
+Type -> integer
+i - identifier
+= - operator
+21 - integer constant
+Factor -> INTCONSTANT
+Term -> Factor
+; - separator
+Expression -> Term
+AssignmentStatement -> Type IDENTIFIER = Expression
+i - identifier
+>= - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Relation -> >=
+number - identifier
+/ - operator
+Factor -> IDENTIFIER
+Term -> Factor
+2 - integer constant
+Factor -> INTCONSTANT
+Term -> Term / Factor
+; - separator
+Expression -> Term
+Condition -> Expression Relation Expression
+i - identifier
+++ - operator
+AssignmentStatement -> Type IDENTIFIER++
+] - separator
+( - separator
+IF - reserved word
+[ - separator
+number - identifier
+% - operator
+Factor -> IDENTIFIER
+Term -> Factor
+2 - integer constant
+Factor -> INTCONSTANT
+Term -> Term mod Factor
+== - operator
+Expression -> Term
+Relation -> ==
+0 - integer constant
+Factor -> INTCONSTANT
+Term -> Factor
+] - separator
+Expression -> Term
+Condition -> Expression Relation Expression
+( - separator
+RET - reserved word
+false - identifier
+ReturnStatement -> ret IDENTIFIER
+Statement -> ReturnStatement
+; - separator
+) - separator
+CompoundStatement -> Statement ;
+; - separator
+IfStatement -> if [ Expression ] ( CompoundStatement )
+Statement -> IfStatement
+) - separator
+CompoundStatement -> Statement ;
+ForStatement -> for [ AssignmentStatement ; Condition ; AssignmentStatement ] ( CompoundStatement )
+Statement -> ForStatement
+; - separator
+RET - reserved word
+true - identifier
+ReturnStatement -> ret IDENTIFIER
+Statement -> ReturnStatement
+; - separator
+) - separator
+CompoundStatement -> Statement ;
+CompoundStatement -> Statement ; CompoundStatement
+CompoundStatement -> Statement ; CompoundStatement
+; - separator
+Program -> def IDENTIFIER [ DeclarationStatement ]  ( CompoundStatement )
+        OK
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>.\please.exe .\p3.txt
+DEF - reserved word
+get_sum - identifier
+[ - separator
+ARR - reserved word
+< - operator
+INT - reserved word
+Type -> integer
+> - operator
+array - identifier
+DeclarationStatement -> arr IDENTIFIER
+] - separator
+( - separator
+INT - reserved word
+Type -> integer
+sum - identifier
+= - operator
+0 - integer constant
+Factor -> INTCONSTANT
+Term -> Factor
+; - separator
+Expression -> Term
+AssignmentStatement -> Type IDENTIFIER = Expression
+Statement -> AssignmentStatement
+FOR - reserved word
+[ - separator
+INT - reserved word
+Type -> integer
+i - identifier
+= - operator
+0 - integer constant
+Factor -> INTCONSTANT
+Term -> Factor
+; - separator
+Expression -> Term
+AssignmentStatement -> Type IDENTIFIER = Expression
+i - identifier
+>= - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Relation -> >=
+array - identifier
+. - operator
+LEN - reserved word
+ArrayExpression -> IDENTIFIER .  length
+Expression -> ArrayExpression
+; - separator
+Condition -> Expression Relation Expression
+i - identifier
+++ - operator
+AssignmentStatement -> Type IDENTIFIER++
+] - separator
+( - separator
+sum - identifier
++ - operator
+= - operator
+array - identifier
+. - operator
+GET_ELEM - reserved word
+[ - separator
+i - identifier
+Factor -> IDENTIFIER
+Term -> Factor
+] - separator
+ArrayExpression -> IDENTIFIER . get_elem [ Term ]
+Expression -> ArrayExpression
+; - separator
+AssignmentStatement -> IDENTIFIER += Expression
+Statement -> AssignmentStatement
+) - separator
+CompoundStatement -> Statement ;
+ForStatement -> for [ AssignmentStatement ; Condition ; AssignmentStatement ] ( CompoundStatement )
+Statement -> ForStatement
+; - separator
+RET - reserved word
+sum - identifier
+ReturnStatement -> ret IDENTIFIER
+Statement -> ReturnStatement
+; - separator
+) - separator
+CompoundStatement -> Statement ;
+CompoundStatement -> Statement ; CompoundStatement
+CompoundStatement -> Statement ; CompoundStatement
+; - separator
+Program -> def IDENTIFIER [ DeclarationStatement ]  ( CompoundStatement )
+        OK
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>.\please.exe .\p_err.txt
+DEF - reserved word
+get_min_between3 - identifier
+[ - separator
+INT - reserved word
+Type -> integer
+a - identifier
+, - separator
+INT - reserved word
+Type -> integer
+b - identifier
+, - separator
+INT - reserved word
+Type -> integer
+c - identifier
+] - separator
+DeclarationStatement -> Type IDENTIFIER
+DeclarationStatement -> Type IDENTIFIER , DeclarationStatement
+DeclarationStatement -> Type IDENTIFIER , DeclarationStatement
+( - separator
+IF - reserved word
+[ - separator
+a - identifier
+<= - operator
+Factor -> IDENTIFIER
+Term -> Factor
+Expression -> Term
+Relation -> <=
+b - identifier
+Error at token & at line 2
+
+D:\uni\UniversityProjects\year3\S1\FLCD\newyacc>
